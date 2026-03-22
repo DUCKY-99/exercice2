@@ -36,3 +36,21 @@ if (limit){
     res.send(pokemon)
 }
 })
+
+//Pokemon par ID
+app.get('/api/pokemon/:id',(req,res)=>{
+  var ID = req.params.id
+ 
+  if(ID > 0){
+    var Identifiant = pokemon.find(p => p.id == ID)
+    if(Identifiant == undefined){
+      res.send("ERREUR 400")
+    }
+    else{
+         res.send(Identifiant)
+    }
+  }
+  else{
+    res.send('ERREUR 404')
+  }
+})
