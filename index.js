@@ -69,3 +69,12 @@ app.get('/api/search' ,(req,res)=>{
 
   res.send(pokemon.filter(p => p.name.toLowerCase().includes(lettres)))
 })
+
+//Pokemon par Niveau
+app.get('/api/level/:min' ,(req,res)=>{
+  var niveau = req.params.min
+
+  var eligible = pokedex.filter(p => p.level >= niveau)
+
+  res.send(eligible)
+})
